@@ -19,6 +19,7 @@ body {
   max-width: 1200px;
   margin: 0 auto; /* centrar con margin automático */
 }
+<<<<<<< HEAD
 /* Layout del panel */
 .panel {
   display: grid;
@@ -34,6 +35,9 @@ body {
   /* Siempre ocupa todo el ancho */
   grid-column: 1 / -1;
 }
+=======
+
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 /* ── Header ── */
 .panel-header {
   display: flex;
@@ -63,7 +67,11 @@ body {
   background: var(--color-marca);
   border-radius: var(--radio-md);
   gap: 12px;
+<<<<<<< HEAD
   flex-wrap: wrap; /* en móvil el contador baja si no cabe */
+=======
+  flex-wrap: wrap;  /* en móvil el contador baja si no cabe */
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
 
 .panel-titulo {
@@ -80,7 +88,11 @@ body {
   align-items: center;
   gap: 6px;
   font-size: var(--text-sm);
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.7);
+=======
+  color: rgba(255,255,255,0.7);
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
 /* ── Tablero — una columna en móvil ── */
 .panel-tablero {
@@ -102,7 +114,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+<<<<<<< HEAD
   min-width: 0; /* evita overflow cuando el contenido es largo */
+=======
+  min-width: 0;  /* evita overflow cuando el contenido es largo */
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
 
 /* ── Header de cada columna ── */
@@ -158,6 +174,7 @@ body {
   gap: 10px;
 }
 
+<<<<<<< HEAD
 /* Layout interno de la tarjeta */
 .tarea-card {
   display: grid;
@@ -188,6 +205,8 @@ body {
   padding-top: 8px;
   margin-top: 4px;
 }
+=======
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 /* ── Tarjeta de tarea ── */
 .tarjeta-tarea {
   background: #f8fafc;
@@ -251,9 +270,13 @@ body {
   border-radius: var(--radio-md);
   border: 1px solid var(--color-borde);
   box-shadow: var(--sombra-sm);
+<<<<<<< HEAD
   transition:
     box-shadow var(--trans-base),
     transform var(--trans-base);
+=======
+  transition: box-shadow var(--trans-base), transform var(--trans-base);
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
 .tarea-card:hover {
   box-shadow: var(--sombra-md);
@@ -314,6 +337,7 @@ body {
 .tarea-fecha {
   font-size: 0.75rem;
   color: #94a3b8;
+<<<<<<< HEAD
 }
 /* Tablet: 2 columnas, la tercera ocupa las 2 */
 @media (min-width: 600px) {
@@ -335,3 +359,6 @@ body {
     grid-column: auto; /* cancelar el span de tablet */
   }
 }
+=======
+}
+>>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
