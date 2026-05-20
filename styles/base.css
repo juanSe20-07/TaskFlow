@@ -1,0 +1,337 @@
+/* Agregar al inicio de base.css */
+@import "tokens.css";
+/* ── Reset global ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ── Cuerpo ── */
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+/* ── Contenedor raíz ── */
+.app {
+  max-width: 1200px;
+  margin: 0 auto; /* centrar con margin automático */
+}
+/* Layout del panel */
+.panel {
+  display: grid;
+  /* móvil: 1 columna, columnas apiladas */
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-fondo);
+  min-height: 100vh;
+}
+.panel-header {
+  /* Siempre ocupa todo el ancho */
+  grid-column: 1 / -1;
+}
+/* ── Header ── */
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 20px 24px; /* relleno interior */
+  background: white;
+  border-radius: 12px;
+  border-left: 5px solid #0f172a; /* borde solo izquierdo */
+  margin-bottom: 24px; /* margen exterior inferior */
+}
+.panel-titulo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+.panel-subtitulo {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+/* ── Header del panel ── */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--color-marca);
+  border-radius: var(--radio-md);
+  gap: 12px;
+  flex-wrap: wrap; /* en móvil el contador baja si no cabe */
+}
+
+.panel-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 800;
+  font-size: var(--text-xl);
+}
+
+.panel-contador {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+/* ── Tablero — una columna en móvil ── */
+.panel-tablero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ── Contenedor de columnas ── */
+.panel-columnas {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* ── Cada columna ── */
+.columna {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0; /* evita overflow cuando el contenido es largo */
+}
+
+/* ── Header de cada columna ── */
+.columna-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde);
+}
+
+/* ── Lista de tarjetas dentro de la columna ── */
+.columna-lista {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* ── Columna Kanban ── */
+.columna-kanban {
+  background: white;
+  border-radius: 12px;
+  padding: 16px; /* relleno interior */
+  border: 1px solid #e2e8f0;
+}
+.columna-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  margin-bottom: 12px;
+}
+.columna-titulo {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+}
+.columna-contador {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.columna-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Layout interno de la tarjeta */
+.tarea-card {
+  display: grid;
+  grid-template-areas:
+    "prioridad titulo"
+    "prioridad meta"
+    "acciones  acciones";
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  padding: 14px;
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-sm);
+}
+
+.tarea-prioridad {
+  grid-area: prioridad;
+}
+.tarea-titulo {
+  grid-area: titulo;
+}
+.tarea-meta {
+  grid-area: meta;
+}
+.tarea-acciones {
+  grid-area: acciones;
+  border-top: 1px solid var(--color-borde);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+/* ── Tarjeta de tarea ── */
+.tarjeta-tarea {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 14px; /* padding = espacio interior de la tarjeta */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--sombra-sm);
+  transform: translateY(0);
+  transition:
+    box-shadow var(--trans-base),
+    transform var(--trans-base);
+  cursor: pointer;
+}
+.tarjeta-tarea:hover {
+  box-shadow: var(--sombra-md);
+  transform: translateY(-2px);
+}
+.tarea-etiqueta {
+  display: inline-block; /* inline-block para que respete padding */
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.tarea-titulo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+.tarea-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+.tarea-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+.tarea-prioridad {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  color: white;
+}
+/* ── Tarjeta de tarea ── */
+.tarea-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--sombra-sm);
+  transition:
+    box-shadow var(--trans-base),
+    transform var(--trans-base);
+}
+.tarea-card:hover {
+  box-shadow: var(--sombra-md);
+  transform: translateY(-2px);
+}
+
+/* ── Fila superior: badge + título ── */
+.tarea-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.tarea-titulo {
+  flex: 1;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-texto);
+  line-height: 1.4;
+}
+
+/* ── Fila inferior: etiqueta + fecha ── */
+.tarea-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tarea-etiqueta {
+  font-size: var(--text-xs);
+  background: var(--color-fondo);
+  padding: 2px 8px;
+  border-radius: 20px;
+  color: var(--color-texto-sec);
+}
+.tarea-fecha {
+  font-size: var(--text-xs);
+  color: var(--color-texto-sec);
+}
+.tarea-prioridad--alta {
+  background: var(--prioridad-alta);
+}
+.tarea-prioridad--media {
+  background: var(--prioridad-media);
+}
+.tarea-prioridad--baja {
+  background: var(--prioridad-baja);
+}
+.tarea-progreso--completado {
+  background: var(--progreso-completado);
+}
+.tarea-progreso--enEjecucion {
+  background: var(--progreso-enEjecucion);
+}
+.tarea-progreso--proxima {
+  background: var(--progreso-proxima);
+}
+.tarea-fecha {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+/* Tablet: 2 columnas, la tercera ocupa las 2 */
+@media (min-width: 600px) {
+  .panel {
+    grid-template-columns: 1fr 1fr;
+  }
+  .columna-kanban:last-child {
+    grid-column: 1 / -1; /* la col "Hecho" ocupa todo el ancho */
+  }
+}
+
+/* Desktop: 3 columnas iguales */
+@media (min-width: 900px) {
+  .panel {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .columna-kanban:last-child {
+    grid-column: auto; /* cancelar el span de tablet */
+  }
+}

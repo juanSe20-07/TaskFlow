@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="panel-header">
+        <h1 class="panel-titulo">TaskFlow</h1>
+        <span class="panel-subtitulo">Gestión de tareas</span>
+      </header>
+
+      <main class="panel-tablero">
+        <section class="columna-kanban">
+          <div class="columna-cabecera">
+            <h2 class="columna-titulo">Por hacer</h2>
+            <span class="columna-contador">3</span>
+          </div>
+          <div class="columna-lista">
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Diseño</span>
+              <h3 class="tarea-titulo">Crear paleta de colores</h3>
+              <p class="tarea-desc">
+                Definir los colores principales del sistema de diseño.
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-prioridad--alta">
+                  Alta
+                </span>
+                <span class="tarea-fecha">27 de abril, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Diseño</span>
+              <h3 class="tarea-titulo">Seleccionar la tipografía</h3>
+              <p class="tarea-desc">
+                Definir el estilo de fuente y tamaño de letra para la página.
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-prioridad--alta">
+                  Alta
+                </span>
+                <span class="tarea-fecha">27 de abril, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Documentación</span>
+              <h3 class="tarea-titulo">Seleccionar el Stack tecnológico</h3>
+              <p class="tarea-desc">
+                Definir los lenguajes de desarrollo que serán usados para la
+                creación de la página web.
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-prioridad--media">
+                  Media
+                </span>
+                <span class="tarea-fecha">30 de abril, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="columna-kanban">
+          <div class="columna-cabecera">
+            <h2 class="columna-titulo">En progreso</h2>
+            <span class="columna-contador">3</span>
+          </div>
+          <div class="columna-lista">
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Diseño</span>
+              <h3 class="tarea-titulo">Crear el maquetado básico en HTML5</h3>
+              <p class="tarea-desc">
+                Definir la estructura semantica de las etiquetas para darle
+                forma a la web
+              </p>
+
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--enEjecucion">
+                  En ejecución
+                </span>
+                <span class="tarea-fecha">1 de mayo, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Diseño</span>
+              <h3 class="tarea-titulo">Crear los estilos base en CSS3</h3>
+              <p class="tarea-desc">
+                Definir los estilos que se tendran en las diferentes secciones
+                de la página web
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--proxima">
+                  Próxima tarea
+                </span>
+                <span class="tarea-fecha">1 de mayo, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Control de versiones</span>
+              <h3 class="tarea-titulo">Crear el repositorio en GItHub</h3>
+              <p class="tarea-desc">
+                Crear el repositorio de la página web en GitHub y sincronizarlo
+                usando Git
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--proxima">
+                  Próxima tarea
+                </span>
+                <span class="tarea-fecha">15 ene 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="columna-kanban">
+          <div class="columna-cabecera">
+            <h2 class="columna-titulo">Listo</h2>
+            <span class="columna-contador">3</span>
+          </div>
+          <div class="columna-lista">
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Diseño</span>
+              <h3 class="tarea-titulo">Wireframes de baja fidelidad</h3>
+              <p class="tarea-desc">
+                Definir la distribución inicial de los elementos a nivel global
+                de la página
+              </p>
+
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--completado">
+                  Completado
+                </span>
+                <span class="tarea-fecha">15 de abril, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Documentación</span>
+              <h3 class="tarea-titulo">Primer versión del IEEE830</h3>
+              <p class="tarea-desc">
+                Completar el primer capitulo del IEEE correspondiente al
+                planteamiento inicial del proyecto web
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--completado">
+                  Completado
+                </span>
+                <span class="tarea-fecha">20 de abril, 2026</span>
+              </div>
+            </article>
+
+            <article class="tarjeta-tarea">
+              <span class="tarea-etiqueta">Análisis</span>
+              <h3 class="tarea-titulo">
+                Generar los requerimientos funcionales y las historias de
+                usuario
+              </h3>
+              <p class="tarea-desc">
+                Definir las funciones clave de la página y las historias de
+                usuario/casos de uso para el análisis inicial del proyecto
+              </p>
+              <div class="tarea-meta">
+                <span class="tarea-prioridad tarea-progreso--completado">
+                  Completado
+                </span>
+                <span class="tarea-fecha">20 de abril, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

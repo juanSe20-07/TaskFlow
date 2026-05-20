@@ -1,0 +1,46 @@
+/* ═══════════════════════════════════
+   TaskFlow — Design Tokens
+   Todas las variables del proyecto
+═══════════════════════════════════ */
+
+:root {
+  /* ── Tipografía ── */
+  --fuente-base: "Inter", "Segoe UI", system-ui, sans-serif;
+  --text-xs: 0.72rem;
+  --text-sm: 0.82rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+
+  /* ── Colores de interfaz ── */
+  --color-fondo: #f1f5f9;
+  --color-superficie: #ffffff;
+  --color-borde: #e2e8f0;
+  --color-texto: #1e293b;
+  --color-texto-sec: #64748b;
+  --color-marca: #0f172a;
+
+  /* ── Prioridad de tareas ── */
+  --prioridad-alta: #dc2626;
+  --prioridad-media: #f3ce27;
+  --prioridad-baja: #16a34a;
+  
+  /* -- Progresos de tareas --*/
+  --progreso-completado: #16df20;
+  --progreso-enEjecucion: #006aff;
+  --progreso-proxima: #c1db00;
+
+  /* ── Radios y sombras ── */
+  --radio-sm: 6px;
+  --radio-md: 10px;
+  --radio-lg: 14px;
+  --sombra-sm: 0 1px 4px rgba(0, 0, 0, 0.07);
+  --sombra-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --sombra-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
+
+  /* ── Transiciones ── */
+  --trans-rapida: 150ms ease;
+  --trans-base: 200ms ease;
+  --trans-lenta: 300ms ease;
+}
