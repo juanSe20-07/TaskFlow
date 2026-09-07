@@ -1,6 +1,6 @@
-/* Agregar al inicio de base.css */
-@import "tokens.css";
-/* ── Reset global ── */
+@import 'tokens.css';
+@import 'animations.css';
+
 *,
 *::before,
 *::after {
@@ -8,57 +8,28 @@
   margin: 0;
   padding: 0;
 }
-/* ── Cuerpo ── */
+
 body {
   font-family: var(--fuente-base);
   background-color: var(--color-fondo);
   color: var(--color-texto);
 }
-/* ── Contenedor raíz ── */
+
 .app {
   max-width: 1200px;
-  margin: 0 auto; /* centrar con margin automático */
+  margin: 0 auto;
 }
-<<<<<<< HEAD
-/* Layout del panel */
+
 .panel {
   display: grid;
-  /* móvil: 1 columna, columnas apiladas */
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   gap: 16px;
   padding: 20px;
   background: var(--color-fondo);
   min-height: 100vh;
 }
-.panel-header {
-  /* Siempre ocupa todo el ancho */
-  grid-column: 1 / -1;
-}
-=======
 
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
-/* ── Header ── */
-.panel-header {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 20px 24px; /* relleno interior */
-  background: white;
-  border-radius: 12px;
-  border-left: 5px solid #0f172a; /* borde solo izquierdo */
-  margin-bottom: 24px; /* margen exterior inferior */
-}
-.panel-titulo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #0f172a;
-}
-.panel-subtitulo {
-  font-size: 0.875rem;
-  color: #64748b;
-}
-/* ── Header del panel ── */
 .panel-header {
   display: flex;
   justify-content: space-between;
@@ -67,11 +38,7 @@ body {
   background: var(--color-marca);
   border-radius: var(--radio-md);
   gap: 12px;
-<<<<<<< HEAD
-  flex-wrap: wrap; /* en móvil el contador baja si no cabe */
-=======
-  flex-wrap: wrap;  /* en móvil el contador baja si no cabe */
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
+  flex-wrap: wrap;
 }
 
 .panel-titulo {
@@ -83,45 +50,134 @@ body {
   font-size: var(--text-xl);
 }
 
-.panel-contador {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.panel-subtitulo {
   font-size: var(--text-sm);
-<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.7);
-=======
-  color: rgba(255,255,255,0.7);
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
-/* ── Tablero — una columna en móvil ── */
-.panel-tablero {
+
+.panel-formulario {
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde);
+  padding: 20px;
+  box-shadow: var(--sombra-sm);
+}
+
+.form-nueva-tarea {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-/* ── Contenedor de columnas ── */
+@media (min-width: 600px) {
+  .form-nueva-tarea {
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: end;
+  }
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.form-input,
+.form-select {
+  padding: 10px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  font-family: var(--fuente-base);
+  font-size: var(--text-base);
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  transition: border-color var(--trans-rapida), box-shadow var(--trans-rapida);
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-marca);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radio-sm);
+  font-family: var(--fuente-base);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primario {
+  background: var(--color-marca);
+  color: white;
+}
+
+.btn-primario:hover {
+  background: #1e293b;
+}
+
+.panel-controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--color-superficie);
+  border-radius: var(--radio-md);
+  border: 1px solid var(--color-borde);
+  padding: 16px 20px;
+  box-shadow: var(--sombra-sm);
+}
+
+.controles-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.panel-tablero {
+  min-height: 400px;
+}
+
+.tareas-contenedor {
+  width: 100%;
+}
+
 .panel-columnas {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 8px;
 }
 
-/* ── Cada columna ── */
 .columna {
   flex: 1;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-<<<<<<< HEAD
-  min-width: 0; /* evita overflow cuando el contenido es largo */
-=======
-  min-width: 0;  /* evita overflow cuando el contenido es largo */
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
 }
 
-/* ── Header de cada columna ── */
 .columna-header {
   display: flex;
   justify-content: space-between;
@@ -132,135 +188,31 @@ body {
   border: 1px solid var(--color-borde);
 }
 
-/* ── Lista de tarjetas dentro de la columna ── */
+.columna-titulo {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-texto-sec);
+  letter-spacing: 0.04em;
+}
+
+.columna-contador {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  background: var(--color-fondo);
+  color: var(--color-texto-sec);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
 .columna-lista {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-/* ── Columna Kanban ── */
-.columna-kanban {
-  background: white;
-  border-radius: 12px;
-  padding: 16px; /* relleno interior */
-  border: 1px solid #e2e8f0;
-}
-.columna-cabecera {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #f1f5f9;
-  margin-bottom: 12px;
-}
-.columna-titulo {
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #475569;
-}
-.columna-contador {
-  font-size: 0.8rem;
-  font-weight: 700;
-  background: #f1f5f9;
-  color: #64748b;
-  padding: 2px 8px;
-  border-radius: 20px;
-}
-.columna-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  min-height: 200px;
 }
 
-<<<<<<< HEAD
-/* Layout interno de la tarjeta */
-.tarea-card {
-  display: grid;
-  grid-template-areas:
-    "prioridad titulo"
-    "prioridad meta"
-    "acciones  acciones";
-  grid-template-columns: auto 1fr;
-  gap: 4px 12px;
-  padding: 14px;
-  background: var(--color-superficie);
-  border-radius: var(--radio-md);
-  box-shadow: var(--sombra-sm);
-}
-
-.tarea-prioridad {
-  grid-area: prioridad;
-}
-.tarea-titulo {
-  grid-area: titulo;
-}
-.tarea-meta {
-  grid-area: meta;
-}
-.tarea-acciones {
-  grid-area: acciones;
-  border-top: 1px solid var(--color-borde);
-  padding-top: 8px;
-  margin-top: 4px;
-}
-=======
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
-/* ── Tarjeta de tarea ── */
-.tarjeta-tarea {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 12px 14px; /* padding = espacio interior de la tarjeta */
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  box-shadow: var(--sombra-sm);
-  transform: translateY(0);
-  transition:
-    box-shadow var(--trans-base),
-    transform var(--trans-base);
-  cursor: pointer;
-}
-.tarjeta-tarea:hover {
-  box-shadow: var(--sombra-md);
-  transform: translateY(-2px);
-}
-.tarea-etiqueta {
-  display: inline-block; /* inline-block para que respete padding */
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #64748b;
-  background: #e2e8f0;
-  padding: 2px 8px;
-  border-radius: 20px;
-}
-.tarea-titulo {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #1e293b;
-}
-.tarea-desc {
-  font-size: 0.8rem;
-  color: #64748b;
-  line-height: 1.5;
-}
-.tarea-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
-}
-.tarea-prioridad {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 20px;
-  color: white;
-}
-/* ── Tarjeta de tarea ── */
 .tarea-card {
   display: flex;
   flex-direction: column;
@@ -270,25 +222,24 @@ body {
   border-radius: var(--radio-md);
   border: 1px solid var(--color-borde);
   box-shadow: var(--sombra-sm);
-<<<<<<< HEAD
-  transition:
-    box-shadow var(--trans-base),
-    transform var(--trans-base);
-=======
   transition: box-shadow var(--trans-base), transform var(--trans-base);
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100
-}
-.tarea-card:hover {
-  box-shadow: var(--sombra-md);
-  transform: translateY(-2px);
 }
 
-/* ── Fila superior: badge + título ── */
+.tarea-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-md);
+}
+
+.tarea-card--nueva {
+  animation: fadeInDown 250ms ease forwards;
+}
+
 .tarea-top {
   display: flex;
   align-items: flex-start;
   gap: 8px;
 }
+
 .tarea-titulo {
   flex: 1;
   font-size: var(--text-sm);
@@ -297,7 +248,32 @@ body {
   line-height: 1.4;
 }
 
-/* ── Fila inferior: etiqueta + fecha ── */
+.badge-prioridad {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radio-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.prioridad-alta {
+  background: var(--prioridad-alta);
+  color: white;
+}
+
+.prioridad-media {
+  background: var(--prioridad-media);
+  color: #1e293b;
+}
+
+.prioridad-baja {
+  background: var(--prioridad-baja);
+  color: white;
+}
+
 .tarea-meta {
   display: flex;
   justify-content: space-between;
@@ -305,60 +281,68 @@ body {
   gap: 8px;
   flex-wrap: wrap;
 }
+
 .tarea-etiqueta {
   font-size: var(--text-xs);
   background: var(--color-fondo);
   padding: 2px 8px;
   border-radius: 20px;
   color: var(--color-texto-sec);
+  white-space: nowrap;
 }
+
 .tarea-fecha {
   font-size: var(--text-xs);
   color: var(--color-texto-sec);
-}
-.tarea-prioridad--alta {
-  background: var(--prioridad-alta);
-}
-.tarea-prioridad--media {
-  background: var(--prioridad-media);
-}
-.tarea-prioridad--baja {
-  background: var(--prioridad-baja);
-}
-.tarea-progreso--completado {
-  background: var(--progreso-completado);
-}
-.tarea-progreso--enEjecucion {
-  background: var(--progreso-enEjecucion);
-}
-.tarea-progreso--proxima {
-  background: var(--progreso-proxima);
-}
-.tarea-fecha {
-  font-size: 0.75rem;
-  color: #94a3b8;
-<<<<<<< HEAD
-}
-/* Tablet: 2 columnas, la tercera ocupa las 2 */
-@media (min-width: 600px) {
-  .panel {
-    grid-template-columns: 1fr 1fr;
-  }
-  .columna-kanban:last-child {
-    grid-column: 1 / -1; /* la col "Hecho" ocupa todo el ancho */
-  }
+  white-space: nowrap;
 }
 
-/* Desktop: 3 columnas iguales */
+.tarea-acciones {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-borde);
+  margin-top: 4px;
+}
+
+.btn-mover,
+.btn-eliminar {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radio-sm);
+  font-family: var(--fuente-base);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.btn-mover {
+  background: var(--color-marca);
+  color: white;
+}
+
+.btn-mover:hover {
+  background: #1e293b;
+}
+
+.btn-eliminar {
+  background: var(--prioridad-alta);
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background: #b91c1c;
+}
+
+.btn-mover:active,
+.btn-eliminar:active {
+  transform: scale(0.96);
+}
+
 @media (min-width: 900px) {
   .panel {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .columna-kanban:last-child {
-    grid-column: auto; /* cancelar el span de tablet */
+    grid-template-rows: auto auto auto 1fr;
   }
 }
-=======
-}
->>>>>>> 067d1e725f7ae4d8507507d8853d0cb7c9a7d100

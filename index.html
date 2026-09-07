@@ -20,168 +20,91 @@
         <span class="panel-subtitulo">Gestión de tareas</span>
       </header>
 
+      <!-- Formulario para crear nueva tarea -->
+      <section class="panel-formulario" aria-label="Crear nueva tarea">
+        <form id="form-nueva-tarea" class="form-nueva-tarea">
+          <div class="form-grupo">
+            <label for="input-titulo" class="form-label">Título de la tarea</label>
+            <input
+              type="text"
+              id="input-titulo"
+              class="form-input"
+              placeholder="¿Qué necesitas hacer?"
+              required
+            />
+          </div>
+          <div class="form-grupo">
+            <label for="select-prioridad" class="form-label">Prioridad</label>
+            <select id="select-prioridad" class="form-select">
+              <option value="alta">Alta</option>
+              <option value="media" selected>Media</option>
+              <option value="baja">Baja</option>
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label for="select-etiqueta" class="form-label">Etiqueta</label>
+            <select id="select-etiqueta" class="form-select">
+              <option value="dev">Desarrollo</option>
+              <option value="diseno">Diseño</option>
+              <option value="docs">Documentación</option>
+              <option value="analisis">Análisis</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primario">Crear tarea</button>
+        </form>
+      </section>
+
+      <!-- Controles de filtro y orden -->
+      <section class="panel-controles" aria-label="Filtros y ordenamiento">
+        <div class="controles-grupo">
+          <label for="filtro-estado" class="control-label">Filtrar por estado</label>
+          <select id="filtro-estado" class="form-select">
+            <option value="todas">Todas</option>
+            <option value="hacer">Por hacer</option>
+            <option value="progreso">En progreso</option>
+            <option value="hecho">Hecho</option>
+          </select>
+        </div>
+        <div class="controles-grupo">
+          <label for="orden-tareas" class="control-label">Ordenar por</label>
+          <select id="orden-tareas" class="form-select">
+            <option value="prioridad">Prioridad</option>
+            <option value="titulo">Título (A-Z)</option>
+          </select>
+        </div>
+      </section>
+
       <main class="panel-tablero">
-        <section class="columna-kanban">
-          <div class="columna-cabecera">
-            <h2 class="columna-titulo">Por hacer</h2>
-            <span class="columna-contador">3</span>
+        <div class="tareas-contenedor">
+          <div class="panel-columnas">
+            <div class="columna" id="col-hacer">
+              <div class="columna-header">
+                <h2 class="columna-titulo">Por hacer</h2>
+                <span class="columna-contador" id="contador-hacer">0</span>
+              </div>
+              <div class="columna-lista" id="lista-hacer"></div>
+            </div>
+
+            <div class="columna" id="col-progreso">
+              <div class="columna-header">
+                <h2 class="columna-titulo">En progreso</h2>
+                <span class="columna-contador" id="contador-progreso">0</span>
+              </div>
+              <div class="columna-lista" id="lista-progreso"></div>
+            </div>
+
+            <div class="columna" id="col-hecho">
+              <div class="columna-header">
+                <h2 class="columna-titulo">Hecho</h2>
+                <span class="columna-contador" id="contador-hecho">0</span>
+              </div>
+              <div class="columna-lista" id="lista-hecho"></div>
+            </div>
           </div>
-          <div class="columna-lista">
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Diseño</span>
-              <h3 class="tarea-titulo">Crear paleta de colores</h3>
-              <p class="tarea-desc">
-                Definir los colores principales del sistema de diseño.
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-prioridad--alta">
-                  Alta
-                </span>
-                <span class="tarea-fecha">27 de abril, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Diseño</span>
-              <h3 class="tarea-titulo">Seleccionar la tipografía</h3>
-              <p class="tarea-desc">
-                Definir el estilo de fuente y tamaño de letra para la página.
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-prioridad--alta">
-                  Alta
-                </span>
-                <span class="tarea-fecha">27 de abril, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Documentación</span>
-              <h3 class="tarea-titulo">Seleccionar el Stack tecnológico</h3>
-              <p class="tarea-desc">
-                Definir los lenguajes de desarrollo que serán usados para la
-                creación de la página web.
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-prioridad--media">
-                  Media
-                </span>
-                <span class="tarea-fecha">30 de abril, 2026</span>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="columna-kanban">
-          <div class="columna-cabecera">
-            <h2 class="columna-titulo">En progreso</h2>
-            <span class="columna-contador">3</span>
-          </div>
-          <div class="columna-lista">
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Diseño</span>
-              <h3 class="tarea-titulo">Crear el maquetado básico en HTML5</h3>
-              <p class="tarea-desc">
-                Definir la estructura semantica de las etiquetas para darle
-                forma a la web
-              </p>
-
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--enEjecucion">
-                  En ejecución
-                </span>
-                <span class="tarea-fecha">1 de mayo, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Diseño</span>
-              <h3 class="tarea-titulo">Crear los estilos base en CSS3</h3>
-              <p class="tarea-desc">
-                Definir los estilos que se tendran en las diferentes secciones
-                de la página web
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--proxima">
-                  Próxima tarea
-                </span>
-                <span class="tarea-fecha">1 de mayo, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Control de versiones</span>
-              <h3 class="tarea-titulo">Crear el repositorio en GItHub</h3>
-              <p class="tarea-desc">
-                Crear el repositorio de la página web en GitHub y sincronizarlo
-                usando Git
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--proxima">
-                  Próxima tarea
-                </span>
-                <span class="tarea-fecha">15 ene 2025</span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="columna-kanban">
-          <div class="columna-cabecera">
-            <h2 class="columna-titulo">Listo</h2>
-            <span class="columna-contador">3</span>
-          </div>
-          <div class="columna-lista">
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Diseño</span>
-              <h3 class="tarea-titulo">Wireframes de baja fidelidad</h3>
-              <p class="tarea-desc">
-                Definir la distribución inicial de los elementos a nivel global
-                de la página
-              </p>
-
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--completado">
-                  Completado
-                </span>
-                <span class="tarea-fecha">15 de abril, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Documentación</span>
-              <h3 class="tarea-titulo">Primer versión del IEEE830</h3>
-              <p class="tarea-desc">
-                Completar el primer capitulo del IEEE correspondiente al
-                planteamiento inicial del proyecto web
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--completado">
-                  Completado
-                </span>
-                <span class="tarea-fecha">20 de abril, 2026</span>
-              </div>
-            </article>
-
-            <article class="tarjeta-tarea">
-              <span class="tarea-etiqueta">Análisis</span>
-              <h3 class="tarea-titulo">
-                Generar los requerimientos funcionales y las historias de
-                usuario
-              </h3>
-              <p class="tarea-desc">
-                Definir las funciones clave de la página y las historias de
-                usuario/casos de uso para el análisis inicial del proyecto
-              </p>
-              <div class="tarea-meta">
-                <span class="tarea-prioridad tarea-progreso--completado">
-                  Completado
-                </span>
-                <span class="tarea-fecha">20 de abril, 2026</span>
-              </div>
-            </article>
-          </div>
-        </section>
+        </div>
       </main>
     </div>
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

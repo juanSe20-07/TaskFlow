@@ -1,0 +1,27 @@
+/* ═══════════════════════════════════════════
+   TaskFlow — animations.css
+   Keyframes y clases de animación del proyecto
+═══════════════════════════════════════════ */
+
+/* Entrada de nueva tarjeta desde arriba */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulso para badge de tarea urgente */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+/* Clase que se aplica a la tarjeta al crearla */
+.tarea-card--nueva {
+  animation: fadeInDown 250ms ease forwards;
+}
