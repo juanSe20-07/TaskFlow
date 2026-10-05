@@ -1,6 +1,7 @@
 import { initFormulario } from './formulario.js';
+import { cargarTareas, guardarTareas } from './storage.js';
 
-const tareas = [
+const tareasIniciales = [
   { id: 1, titulo: 'Diseñar mockups del panel', prioridad: 'alta', estado: 'hacer', etiqueta: 'dev' },
   { id: 2, titulo: 'Configurar repositorio Git', prioridad: 'media', estado: 'hacer', etiqueta: 'dev' },
   { id: 3, titulo: 'Escribir README del proyecto', prioridad: 'baja', estado: 'hacer', etiqueta: 'docs' },
@@ -8,6 +9,12 @@ const tareas = [
   { id: 5, titulo: 'Definir tokens de diseño', prioridad: 'media', estado: 'progreso', etiqueta: 'diseno' },
   { id: 6, titulo: 'Instalar extensiones VS Code', prioridad: 'baja', estado: 'hecho', etiqueta: 'dev' },
 ];
+
+let tareas = cargarTareas();
+
+if (tareas.length === 0) {
+  tareas = tareasIniciales;
+}
 
 const columnasMap = {
   'hacer': 'col-hacer',
@@ -135,6 +142,7 @@ function renderTareas(listaFiltrada = null) {
 
 function handleNuevaTarea(nuevaTarea) {
   tareas.push(nuevaTarea);
+  guardarTareas(tareas);
   renderTareas();
 }
 
@@ -161,17 +169,40 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnMover) {
       const id = Number(btnMover.dataset.id);
       const tarea = tareas.find(t => t.id === id);
+
       if (tarea) {
         tarea.estado = estadoSiguiente[tarea.estado] || 'hacer';
       }
+
+      guardarTareas(tareas);
       renderTareas();
+
+      if (tarea && tarea.estado === 'hecho') {
+        notificarCompletada(tarea);
+      }
     }
 
     if (btnBorrar) {
       const id = Number(btnBorrar.dataset.id);
       const idx = tareas.findIndex(t => t.id === id);
+
       if (idx !== -1) tareas.splice(idx, 1);
+
+      guardarTareas(tareas);
       renderTareas();
     }
   });
 });
+
+async function notificarCompletada(tarea) {
+  const notif = document.createElement('div');
+  notif.className = 'notificacion';
+  notif.textContent = `✓ "${tarea.titulo}" completada`;
+  document.body.appendChild(notif);
+
+  await new Promise(res => setTimeout(res, 2500));
+  notif.classList.add('notificacion--saliendo');
+
+  await new Promise(res => setTimeout(res, 300));
+  notif.remove();
+}
